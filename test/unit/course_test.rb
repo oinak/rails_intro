@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
-  test "the truth" do
-    assert true
-  end
 
   def test_titulo_no_puede_estar_vacio
     course = courses(:one)
@@ -13,4 +10,15 @@ class CourseTest < ActiveSupport::TestCase
     assert_not_nil course.errors[:name]
 
   end
+
+  test "a course with title" do
+    valid_course = courses(:valid)
+
+    assert valid_course.valid?
+
+    assert_equal 0, valid_course.errors.size
+
+
+  end
+
 end
