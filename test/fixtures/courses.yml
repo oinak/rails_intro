@@ -5,5 +5,22 @@ one:
   description: MyText
 
 valid:
-  name: Curso con titulo
-  description: tiene titulo
+  name: Example course
+  description: It is valid
+  location: Madrid
+  active: true
+  start_date: <%= 1.month.since(Time.now) %>
+
+active:
+  name: Active course
+  description: Will be here in one month
+  location: Madrid
+  active: true
+  start_date: <%= 1.month.since(Time.now) %>
+
+past:
+  name: Past course
+  description: Happened already
+  location: Madrid
+  active: false
+  start_date: <%= 1.month.ago %>
