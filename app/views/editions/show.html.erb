@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start:</b>
+  <%= @edition.start %>
+</p>
+
+<p>
+  <b>Finish:</b>
+  <%= @edition.finish %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @edition.location %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @edition.active %>
+</p>
+
+<p>
+  <b>Seats:</b>
+  <%= @edition.seats %>
+</p>
+
+<p>
+  <b>Price in cents:</b>
+  <%= @edition.price_in_cents %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%= @edition.course %>
+</p>
+
+
+<%= link_to 'Edit', edit_edition_path(@edition) %> |
+<%= link_to 'Back', editions_path %>

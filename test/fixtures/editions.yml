@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2013-05-15
+  finish: 2013-05-15
+  location: MyString
+  active: false
+  seats: 1
+  price_in_cents: 1
+  course: 
+
+two:
+  start: 2013-05-15
+  finish: 2013-05-15
+  location: MyString
+  active: false
+  seats: 1
+  price_in_cents: 1
+  course: 

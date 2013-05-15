@@ -1,4 +1,7 @@
 Curso::Application.routes.draw do
+  resources :editions
+
+
   resources :courses
 
 
