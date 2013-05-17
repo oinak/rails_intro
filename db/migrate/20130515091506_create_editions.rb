@@ -1,5 +1,8 @@
 # encoding: utf-8
 class CreateEditions < ActiveRecord::Migration
+  class Edition < ActiveRecord::Base
+    attr_accesible :course_id, :location, :active, :start
+  end
   def up
     create_table :editions do |t|
       t.date :start

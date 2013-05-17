@@ -12,7 +12,7 @@
 
 <p>
   <b>Location:</b>
-  <%= @edition.location %>
+  <%= ( @edition.location? ? link_to(@edition.location, @edition.location_map_link) : '') %>
 </p>
 
 <p>
@@ -36,5 +36,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_edition_path(@edition) %> |
-<%= link_to 'Back', editions_path %>
+<%= link_to 'Edit', edit_course_edition_path(@course,@edition) %> |
+<%= link_to 'Back', course_editions_path(@course) %>

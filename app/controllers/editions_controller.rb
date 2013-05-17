@@ -1,8 +1,10 @@
 class EditionsController < ApplicationController
+  before_filter :load_course 
+
   # GET /editions
   # GET /editions.json
   def index
-    @editions = Edition.all
+    @editions = @course.editions.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class EditionsController < ApplicationController
   # GET /editions/1
   # GET /editions/1.json
   def show
-    @edition = Edition.find(params[:id])
+    @edition = @course.editions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +26,7 @@ class EditionsController < ApplicationController
   # GET /editions/new
   # GET /editions/new.json
   def new
-    @edition = Edition.new
+    @edition = @course.editions.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +36,17 @@ class EditionsController < ApplicationController
 
   # GET /editions/1/edit
   def edit
-    @edition = Edition.find(params[:id])
+    @edition = @course.editions.find(params[:id])
   end
 
   # POST /editions
   # POST /editions.json
   def create
-    @edition = Edition.new(params[:edition])
+    @edition = @course.editions.new(params[:edition])
 
     respond_to do |format|
       if @edition.save
-        format.html { redirect_to @edition, notice: 'Edition was successfully created.' }
+        format.html { redirect_to [@course,@edition], notice: 'Edition was successfully created.' }
         format.json { render json: @edition, status: :created, location: @edition }
       else
         format.html { render action: "new" }
@@ -56,11 +58,11 @@ class EditionsController < ApplicationController
   # PUT /editions/1
   # PUT /editions/1.json
   def update
-    @edition = Edition.find(params[:id])
+    @edition = @course.editions.find(params[:id])
 
     respond_to do |format|
       if @edition.update_attributes(params[:edition])
-        format.html { redirect_to @edition, notice: 'Edition was successfully updated.' }
+        format.html { redirect_to [@course,@edition], notice: 'Edition was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,12 +74,18 @@ class EditionsController < ApplicationController
   # DELETE /editions/1
   # DELETE /editions/1.json
   def destroy
-    @edition = Edition.find(params[:id])
+    @edition = @course.editions.find(params[:id])
     @edition.destroy
 
     respond_to do |format|
-      format.html { redirect_to editions_url }
+      format.html { redirect_to course_editions_url(@course) }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_course
+    @course = Course.find(params[:course_id])
   end
 end
