@@ -1,5 +1,11 @@
 <h1>Listing courses</h1>
 
+<%= link_to_unless(@filter.nil?, 'All', courses_path) %>
+&nbsp;|&nbsp;
+<%= link_to_unless(@filter == 'active', 'Active', courses_path(:filter => 'active')) %>
+&nbsp;|&nbsp;
+<%= link_to_unless(@filter == 'unactive', 'Unactive', courses_path(:filter => 'unactive')) %>
+
 <table>
 <% @courses.each do |course| %>
   <tr>

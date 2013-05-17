@@ -2,7 +2,8 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @filter = params[:filter].blank? ? nil : params[:filter]
+    @courses = Course.filtered(params[:filter]).all
 
     respond_to do |format|
       format.html # index.html.erb
