@@ -23,8 +23,8 @@
     <td>
     <%= number_to_currency(edition.price, unit: "&euro;", format: "%n %u") %>
     </td>
-    <td><%= link_to 'Show', course_edition([@course,edition]) %></td>
-    <td><%= link_to 'Edit', edit_course_edition_path([@course,edition]) %></td>
+    <td><%= link_to 'Show', course_editions_path([@course,edition]) %></td>
+    <td><%= link_to 'Edit', [:edit, @course, edition] %></td>
     <td><%= link_to 'Destroy', [@course,edition], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
