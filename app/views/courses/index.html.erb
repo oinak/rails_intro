@@ -1,20 +1,11 @@
 <h1>Listing courses</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th>Editions</th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @courses.each do |course| %>
   <tr>
-    <td><%= course.name %></td>
+    <th><%= course.name %></th>
     <td><%= course.description %></td>
-    <td><%= link_to 'Editions', course_editions_path(course) %></td>
+    <td><%= link_to_editions(course) %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
