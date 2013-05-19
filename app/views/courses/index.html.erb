@@ -9,12 +9,13 @@
 <table>
 <% @courses.each do |course| %>
   <tr>
-    <th><%= course.name %></th>
+    <th><%= link_to course.name, course %></th>
     <td><%= course.description %></td>
     <td><%= link_to_editions(course) %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user %>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

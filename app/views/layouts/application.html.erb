@@ -13,6 +13,10 @@
       &nbsp;|&nbsp;
       <%= link_to("Logout", logout_path) %>
     <% else %>
+      <% if controller == 'user_session' %>
+        <%= render :partial => "user_sessions/user_session", :object => UserSession.new %>
+        &nbsp;|&nbsp;
+      <% end %>
       <%= link_to_unless_current("Register", new_user_path) %>
       &nbsp;|&nbsp;
       <%= link_to_unless_current("Log in", login_path) %>
