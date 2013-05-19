@@ -1,6 +1,11 @@
 Curso::Application.routes.draw do
 
+  match 'login'  => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  resources :user_sessions
   resources :users
+
+  match 'signup' => 'users#new', :as => :signup
 
   resources :courses do
     resources :editions

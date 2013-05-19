@@ -7,10 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="user_nav">
-  <%= link_to "Register", new_user_path %>
-</div>
+  <div id="user_nav">
+    <% if current_user %>
+      <%= link_to_unless_current("Edit profile", edit_user_path(:current)) %>
+      &nbsp;|&nbsp;
+      <%= link_to("Logout", logout_path) %>
+    <% else %>
+      <%= link_to_unless_current("Register", new_user_path) %>
+      &nbsp;|&nbsp;
+      <%= link_to_unless_current("Log in", login_path) %>
+    <% end %>
+  </div>
 
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
