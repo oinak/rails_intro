@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_filter :check_user, :except => [:show,:index]
+
   # GET /courses
   # GET /courses.json
   def index
@@ -80,5 +82,13 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
+  end
+
+  def check_user
+   if current_user
+     true
+   else
+     redirect_to login_path(:return_to => url_for(action: params[:action]))
+   end
   end
 end
